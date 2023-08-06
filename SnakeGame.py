@@ -2,6 +2,9 @@
 import turtle
 import random
 
+# Load the background image
+background_images = ['R.gif', 'A.gif', 'B.gif', 'C.gif', 'D.gif']
+
 # Constants
 WIDTH = 800
 HEIGHT = 800
@@ -102,6 +105,9 @@ def reset():
     snake_direction = 'up'
     food_pos = get_random_food_pos()
     food.goto(food_pos)
+    # Reset background with a random image
+    random_bg_image = random.choice(background_images)
+    screen.bgpic(random_bg_image)
     game_loop()
 
 
@@ -109,24 +115,41 @@ def reset():
 screen = turtle.Screen()
 screen.setup(WIDTH, HEIGHT)  # Dimensions of the window
 screen.title('Snake')
-screen.bgcolor('green')
 screen.tracer(0)  # Turns off automatic animations
 
 # Event handlers
 screen.listen()
 bind_direction_keys()
 
+# Custom snake shape
+zigzag_shape = (
+    (-8, 8), (-15, 0), (-8, -8), (0, -15), (8, -8), (15, 0), (8, 8), (0, 15)
+)
+
+# Register the custom fire shape
+turtle.register_shape("custom_zigzag", zigzag_shape)
+
 # Create a turtle to do bidding
 stamper = turtle.Turtle()
-stamper.shape('square')
-stamper.color('black')
+stamper.shape('custom_zigzag')
+stamper.color('red', 'yellow')
 stamper.penup()
+
+# Custom food shape
+apple_shape = (
+    (0, -10), (5, -20), (15, -20), (20, -10),
+    (15, 0), (10, 10), (0, 15), (-10, 10), (-15, 0),
+    (-20, -10), (-15, -20), (-5, -20)
+)
+
+# Register the custom apple shape
+turtle.register_shape("custom_apple", apple_shape)
 
 # Food
 food = turtle.Turtle()
-food.shape('circle')
+food.shape('custom_apple')
 food.color('red')
-food.shapesize(FOODSIZE / 20)
+food.shapesize(FOODSIZE / 15)
 food.penup()
 
 # Initial call
