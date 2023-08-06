@@ -105,9 +105,24 @@ def reset():
     snake_direction = 'up'
     food_pos = get_random_food_pos()
     food.goto(food_pos)
+
     # Reset background with a random image
     random_bg_image = random.choice(background_images)
     screen.bgpic(random_bg_image)
+
+    # Generate random colors for stamper
+    random_color1 = (random.random(), random.random(), random.random())
+    random_color2 = (random.random(), random.random(), random.random())
+    stamper.color(random_color1, random_color2)
+
+    # Generate random colors for stamper and food
+    random_color1 = (random.random(), random.random(), random.random())
+    random_color2 = (random.random(), random.random(), random.random())
+    stamper.color(random_color1, random_color2)
+
+    random_food_color = (random.random(), random.random(), random.random())
+    food.color(random_food_color)
+
     game_loop()
 
 

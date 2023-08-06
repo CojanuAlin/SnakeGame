@@ -18,7 +18,7 @@ This is a simple Snake game implemented in Python using the Turtle graphics libr
 ## Features
 
 - Classic Snake gameplay.
-- Randomly generated food items.
+- Randomly generated food items, food color, snake color
 - Snake body follows a customizable zigzag shape.
 - Customizable background images.
 - Score tracking.
