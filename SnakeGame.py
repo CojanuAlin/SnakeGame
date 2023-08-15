@@ -138,7 +138,10 @@ bind_direction_keys()
 
 # Custom snake shape
 zigzag_shape = (
-    (-8, 8), (-15, 0), (-8, -8), (0, -15), (8, -8), (15, 0), (8, 8), (0, 15)
+    (0, 9), (2, 8), (4, 6), (6, 4),
+    (8, 2), (9, 0), (8, -2), (5, -5),
+    (6, -14), (0, -18), (-6, -14), (-10, -10),
+    (-15, -5), (-18, 0), (-15, 4), (-12, 8)
 )
 
 # Register the custom fire shape
@@ -151,18 +154,17 @@ stamper.color('red', 'yellow')
 stamper.penup()
 
 # Custom food shape
-apple_shape = (
-    (0, -10), (5, -20), (15, -20), (20, -10),
-    (15, 0), (10, 10), (0, 15), (-10, 10), (-15, 0),
-    (-20, -10), (-15, -20), (-5, -20)
+star_shape = (
+    (0, 20), (7, 7), (20, 0), (7, -7),
+    (0, -20), (-7, -7), (-20, 0), (-7, 7)
 )
 
 # Register the custom apple shape
-turtle.register_shape("custom_apple", apple_shape)
+turtle.register_shape("custom_star", star_shape)
 
 # Food
 food = turtle.Turtle()
-food.shape('custom_apple')
+food.shape('custom_star')
 food.color('red')
 food.shapesize(FOODSIZE / 15)
 food.penup()
